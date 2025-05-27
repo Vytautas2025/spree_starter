@@ -33,5 +33,13 @@ module SpreeStarter
 
     # https://github.com/rails/rails/issues/45826
     config.active_record.yaml_column_permitted_classes = [Symbol, BigDecimal, Date, Time, ActiveSupport::TimeWithZone, ActiveSupport::TimeZone, ActiveSupport::HashWithIndifferentAccess]
+
+    # Suppress warnings in development
+    if Rails.env.development?
+      config.active_support.deprecation = :log
+      # Suppress Ruby warnings (including parser and constant redefinition warnings)
+      Warning[:deprecated] = false
+      $VERBOSE = nil
+    end
   end
 end

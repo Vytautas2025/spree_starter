@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby '3.3.0'
+ruby '3.3.8'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 8.0.0'
@@ -97,7 +97,7 @@ group :test do
   gem 'webmock', '~> 3.7', require: false
   gem 'timecop'
   gem 'rails-controller-testing'
-  gem 'webdrivers', '~> 5.0'
+  gem 'webdrivers', '= 5.3.0'  # Pin to specific version to stop deprecation warning
 end
 
 # Use Sidekiq for background jobs
@@ -113,7 +113,7 @@ gem "spree_emails", spree_opts
 gem "spree_sample", spree_opts
 gem "spree_admin", spree_opts
 gem "spree_storefront", spree_opts
-gem "spree_stripe", '~> 1.2'
+gem "spree_stripe", '1.2.1' # or another stable version
 gem "spree_google_analytics", "~> 1.0"
 gem "spree_i18n"
 
@@ -121,3 +121,5 @@ gem "spree_i18n"
 gem 'sentry-ruby'
 gem 'sentry-rails'
 gem 'sentry-sidekiq'
+
+gem "tailwindcss-rails", "~> 3.3"

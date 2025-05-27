@@ -16,6 +16,12 @@ Spree.config do |config|
   # Example:
   # Uncomment to stop tracking inventory levels in the application
   # config.track_inventory_levels = false
+
+  # Core preferences
+  config.currency = "USD"
+
+  # Remove the invalid user_class configuration
+  # config.user_class = "User"  # This line causes the error
 end
 
 # Background job queue names
@@ -34,6 +40,9 @@ end
 #   Spree.private_storage_service_name = :amazon_public # public assets, such as product images
 #   Spree.public_storage_service_name = :amazon_private # private assets, such as invoices, etc
 # end
+
+# Enable theme preview screenshots in admin dashboard
+# Spree.screenshot_api_token = <Your Screenshot API token obtained from https://screenshotapi.net/>
 
 # Configure Spree Dependencies
 #
@@ -82,13 +91,15 @@ Rails.application.config.after_initialize do
   # Rails.application.config.spree_storefront.head_partials << 'spree/shared/that_js_snippet_that_marketing_forced_me_to_include'
 end
 
-Spree.user_class = 'Spree::User'
+# Set user class outside of config block
+Spree.user_class = "User"
 # Use a different class for admin users
 # Spree.admin_user_class = 'AdminUser'
 
-Spree.google_places_api_key = ENV['GOOGLE_PLACES_API_KEY'] if ENV['GOOGLE_PLACES_API_KEY'].present?
-Spree.screenshot_api_token = ENV['SCREENSHOT_API_TOKEN'] if ENV['SCREENSHOT_API_TOKEN'].present?
-
 Rails.application.config.to_prepare do
   require_dependency 'spree/authentication_helpers'
+end
+
+if defined?(Devise) && Devise.respond_to?(:parent_controller)
+  Devise.parent_controller = "Spree::BaseController"
 end
