@@ -113,7 +113,7 @@ gem "spree_emails", spree_opts
 gem "spree_sample", spree_opts
 gem "spree_admin", spree_opts
 gem "spree_storefront", spree_opts
-gem "spree_stripe", '1.2.1' # or another stable version
+gem "spree_stripe", '1.2.4' # or another stable version
 gem "spree_google_analytics", "~> 1.0"
 gem "spree_i18n"
 
