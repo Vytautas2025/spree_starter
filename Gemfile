@@ -97,7 +97,7 @@ group :test do
   gem 'webmock', '~> 3.7', require: false
   gem 'timecop'
   gem 'rails-controller-testing'
-  gem 'webdrivers', '= 5.3.0'  # Pin to specific version to stop deprecation warning
+  gem 'webdrivers', '5.3.1'  # Pin to specific version to stop deprecation warning
 end
 
 # Use Sidekiq for background jobs
